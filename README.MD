@@ -41,11 +41,148 @@ The process should be closest possible to "real-time", balancing your choices in
 scalability.
 
 ## Nice to have features (describe or implement):
-* Asynchronous processing
-* Database
-* Docker
-* AWS
-* Security
-* Swagger
-* Clean Code
-* Test
+- [ ] Asynchronous processing 
+- [x] Database      
+- [x] Docker        
+- [ ] AWS
+- [x] Security
+- [x] Swagger       
+- [x] Clean Code    
+- [x] Test          
+
+
+## 🚀 Starting
+
+Essas instruções permitirão que você obtenha uma cópia do projeto em máquina local para fins de deploy em containers.
+
+### 📋 Requireds
+
+Para este projeto será necessario:
+
+```
+Docker
+docker-compose
+Maven
+```
+
+### 🔧 Installations
+
+Para prepara o ambiente, siga os passos e instale as seguintes ferramentas:
+
+Clone o repositorio em uma pasta a sua escolha:
+
+```
+git clone https://github.com/Hajadalaj/challenge-cdt.git
+```
+
+* [Instalar o Docker](https://docs.docker.com/engine/install/)
+
+Confirme a instalação:
+
+```
+input:
+$ docker -v
+```
+
+```
+output:
+$ Docker version 20.10.5, build 55c4c88
+```
+
+Após instalar o Docker, faça um pull da imagem do Microsoft SQL Server:
+
+```
+docker pull mcr.microsoft.com/mssql/server
+```
+* [Instalar o docker-compose](https://docs.docker.com/compose/install/)
+
+Confirme a instalação:
+
+```
+input:
+$ docker-compose -v
+```
+
+```
+output:
+$ docker-compose version 1.25.0, build unknown
+```
+
+* [Intalar o Maven](https://maven.apache.org/download.cgi)
+
+E por fim, um build do jar:
+
+```
+$ mvn clean install
+```
+
+### ⚙️ Deploy
+
+Após concluir o passo de instalação, navegue até a pasta raiz do projeto pela cli:
+
+```
+cd /challenge-cdt/conductor-project/
+```
+
+Vamos executar comando docker para criar uma imagem do projeto:
+
+```
+docker build -t conductor-service .
+```
+
+E por fim, subir as duas imagens, **Microsoft SQL Server** e **conductor-service** 
+
+```
+docker-compose up
+```
+
+A partir de agora a aplicação fica acessivel pelo seguinte IP:
+
+```
+200.100.50.10:8080
+```
+
+[API](http://200.100.50.10:8080/swagger-ui.html#)
+
+E o BD pelo IP:
+
+```
+200.100.50.5:1433
+```
+Obs: Para este exemplo os dados de login e senha do DataBase, estão no arquivo:
+
+```
+/challenge-cdt/conductor-project/src/main/resources/application.properties
+```
+
+Com o banco devidamente configurado em algum SGBD, execute um dos seguintes sripts:
+
+**MSSQL**
+
+[stored_procedure](https://github.com/Hajadalaj/challenge-cdt/blob/feture/conductor/api/conductor-project/src/main/resources/sp_payment.sql)
+
+**DBeaver**
+
+[stored_procedure](https://github.com/Hajadalaj/challenge-cdt/blob/feture/conductor/api/conductor-project/src/main/resources/sp_payment_dbeaver.sql)
+
+
+### 🔩 Testing
+
+Ao concluir o paso de **Deploy**, vamos efetuar alguns testes funcionais, para tal, usaremos o Postman:
+
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/25b1e4fbe2128d3b120b)
+
+O primeiro serviço a ser executado é o **postOuth**, com ele vamos gerar o token para as demais API's.
+
+Após gerar o token, vamos adicionar na aba header, da seguinte forma:
+
+![token-header](https://github.com/Hajadalaj/challenge-cdt/blob/feture/conductor/api/img/image.png)
+
+Então, com o token criado e configurado para os demais serviços podemos iniciar os testes funcionais. 😊
+
+### 🛠️ Built with
+
+* [jdk-11](https://www.oracle.com/br/java/technologies/javase-jdk11-downloads.html) - Versão java;
+* [Maven](https://maven.apache.org/) - Gerenciador de Dependência;
+* [spring-boot](https://spring.io/projects/spring-boot) - Framework: web, jpa, security e jpa.
+
