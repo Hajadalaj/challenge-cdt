@@ -159,11 +159,11 @@ Com o banco devidamente configurado em algum SGBD, execute um dos seguintes srip
 
 **MSSQL**
 
-[stored_procedure](https://github.com/Hajadalaj/challenge-cdt/blob/feture/conductor/api/conductor-project/src/main/resources/sp_payment.sql)
+[stored_procedure](https://github.com/Hajadalaj/challenge-cdt/blob/main/conductor-project/src/main/resources/sp_payment.sql)
 
 **DBeaver**
 
-[stored_procedure](https://github.com/Hajadalaj/challenge-cdt/blob/feture/conductor/api/conductor-project/src/main/resources/sp_payment_dbeaver.sql)
+[stored_procedure](https://github.com/Hajadalaj/challenge-cdt/blob/main/conductor-project/src/main/resources/sp_payment_dbeaver.sql)
 
 
 ### 🔩 Testing
@@ -176,7 +176,7 @@ O primeiro serviço a ser executado é o **postOuth**, com ele vamos gerar o tok
 
 Após gerar o token, vamos adicionar na aba header, da seguinte forma:
 
-![token-header](https://github.com/Hajadalaj/challenge-cdt/blob/feture/conductor/api/img/image.png)
+![token-header](https://github.com/Hajadalaj/challenge-cdt/blob/main/img/image.png)
 
 Então, com o token criado e configurado para os demais serviços podemos iniciar os testes funcionais. 😊
 
